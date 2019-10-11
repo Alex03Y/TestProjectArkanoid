@@ -12,11 +12,10 @@ Him make lvl of bricks with random sprites (colors).
 If player win or lose -  in result popup of the game end text will be changed.
 ![End Game Popup](https://github.com/Alex03Y/TestProjectArkanoid/blob/master/Pictures/WinPopup.gif "End Game Popup")
 
+## Patterns and Tools
+I'm used MVC for GUI and to monitor the state of the game.
 
-I'm used MVC for GUI and to monitor the state of the game. 
-[](https://github.com/Alex03Y/TestProjectArkanoid/blob/master/Pictures/MVC%20and%20ObserverPattern.png "MVC and ObserverPattern")
-
-Animation or popup i'm make with DOTween, example code:
+Animation or popup i'm make with [DOTween](https://assetstore.unity.com/packages/tools/animation/dotween-hotween-v2-27676), example code:
 ```
 //Popup menu
     transform.DOScale(Vector3.one, 0.5f).SetEase(_animationScaleIn);
