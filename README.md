@@ -4,7 +4,8 @@ This is one of my test game project. I create simple version of original Arkanoi
 ![Example](https://github.com/Alex03Y/TestProjectArkanoid/blob/master/Pictures/ExampleGamePlayHighFps.gif)
 
 Settings lvl-builder:
-![Lvl-Builder](https://github.com/Alex03Y/TestProjectArkanoid/blob/master/Pictures/Lvl-builder.png)
+
+![Lvl-Builder](https://github.com/Alex03Y/TestProjectArkanoid/blob/master/Pictures/Lvl%20Builder.png)
 
 Him make lvl of bricks with random sprites (colors).
 
