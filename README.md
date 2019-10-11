@@ -18,8 +18,8 @@ I'm used MVC for GUI and to controle the state of the game.
 Animation for popup i'm make with [DOTween](https://assetstore.unity.com/packages/tools/animation/dotween-hotween-v2-27676), example code:
 ```
 //Popup menu
-    transform.DOScale(Vector3.one, 0.5f).SetEase(_animationScaleIn);
-    transform.DOLocalJump(Vector3.one, 2f, 1, 0.5f, true);
+    transform.DOScale(Vector3.one, 0.5f).SetEase(_animationCurve);
+    transform.DOLocalMove(Vector3.one, 0.5f, false).SetEase(_animationCurve);
 
 //Vignette
     DOTween.ToAlpha(() => Vignette.color, x => Vignette.color = x, 0.5f, 0.35f)
