@@ -1,7 +1,15 @@
 # TestProjectArkanoid
 This is one of my test game project. I create simple version of original Arkanoid game. 
 
-![The level in this game](https://github.com/Alex03Y/TestProjectArkanoid/blob/master/Pictures/Beginning%20of%20the%20game.png)
+![Example](https://github.com/Alex03Y/TestProjectArkanoid/blob/master/Pictures/Gameplay.gif)
 
-I'm used MVC
-![The end game](https://github.com/Alex03Y/TestProjectArkanoid/blob/master/Pictures/End%20Game.png)
+Setings lvl-builder:
+![Lvl-Builder](https://github.com/Alex03Y/TestProjectArkanoid/blob/master/Pictures/Lvl-builder.png)
+
+Him make lvl of bricks with random sprites (colors).
+
+If player win or lose -  in result popup of the game end text be changed.
+![End Game Popup](https://github.com/Alex03Y/TestProjectArkanoid/blob/master/Pictures/WinPopup.gif)
+
+
+I'm used MVC for GUI and to monitor the state of the game.
