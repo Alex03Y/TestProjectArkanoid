@@ -17,8 +17,8 @@ I'm used MVC for GUI and to monitor the state of the game.
 
 Animation or popup i'm make with DOTween, example code:
 
-  //For popup menu
-  transform.DOScale(Vector3.one, 0.5f).SetEase(_animationScaleIn);
+  '//For popup menu
+  'transform.DOScale(Vector3.one, 0.5f).SetEase(_animationScaleIn);
   transform.DOLocalJump(Vector3.one, 2f, 1, 0.5f, true);
 
   //For Vignette
