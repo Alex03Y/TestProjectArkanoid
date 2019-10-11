@@ -3,17 +3,17 @@ This is one of my test game project. I create simple version of original Arkanoi
 
 ![](https://github.com/Alex03Y/TestProjectArkanoid/blob/master/Pictures/ExampleGamePlayHighFps.gif "Example")
 
-Settings lvl-builder:
+Level builder settings:
 
 ![](https://github.com/Alex03Y/TestProjectArkanoid/blob/master/Pictures/Lvl%20Builder.png "Lvl-Builder")
 
-Him make lvl of bricks with random sprites (colors).
+He make level from bricks with random sprites (colors).
 
 If player win or lose -  in result popup of the game end text will be changed.
 ![End Game Popup](https://github.com/Alex03Y/TestProjectArkanoid/blob/master/Pictures/WinPopup.gif "End Game Popup")
 
 ## Patterns and Tools
-I'm used MVC for GUI and to monitor the state of the game.
+I'm used MVC for GUI and to controle the state of the game.
 
 Animation or popup i'm make with [DOTween](https://assetstore.unity.com/packages/tools/animation/dotween-hotween-v2-27676), example code:
 ```
