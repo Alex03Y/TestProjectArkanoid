@@ -16,10 +16,12 @@ If player win or lose -  in result popup of the game end text will be changed.
 I'm used MVC for GUI and to monitor the state of the game.
 
 Animation or popup i'm make with DOTween, example code:
+```
+//Popup menu
+    transform.DOScale(Vector3.one, 0.5f).SetEase(_animationScaleIn);
+    transform.DOLocalJump(Vector3.one, 2f, 1, 0.5f, true);
 
-  '//For popup menu
-  'transform.DOScale(Vector3.one, 0.5f).SetEase(_animationScaleIn);
-  transform.DOLocalJump(Vector3.one, 2f, 1, 0.5f, true);
+//Vignette
+    DOTween.ToAlpha(() => Vignette.color, x => Vignette.color = x, 0.5f, 0.35f)
 
-  //For Vignette
-  DOTween.ToAlpha(() => Vignette.color, x => Vignette.color = x, 0.5f, 0.35f)
+```
