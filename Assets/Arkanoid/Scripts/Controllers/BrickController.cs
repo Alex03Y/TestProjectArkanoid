@@ -5,14 +5,15 @@ namespace Arkanoid.Controllers
 {
     public class BrickController : MonoBehaviour
     {
-        public event Action OnDestroyed;
+        private GameModel _gameModel;
+        
+        [HideInInspector] public SpriteRenderer SpriteRenderer;
         
         private void OnCollisionEnter2D(Collision2D other)
         {
-            GameModel.Instance().AddScore();
-            GameModel.Instance().SetChanged();
-            
-            OnDestroyed?.Invoke();
+            _gameModel = GameModel.Instance();
+            _gameModel.AddScore();
+            _gameModel.SetChanged();
             Destroy(gameObject);
         }
     }

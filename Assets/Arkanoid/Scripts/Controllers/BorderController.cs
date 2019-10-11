@@ -8,6 +8,10 @@ namespace Arkanoid.Controllers
         [SerializeField] private EdgeCollider2D EdgeCollider;
         [SerializeField] private float Scatter;
         
+        /*
+         Resize a border depending on the aspect ratio.
+         And paint a collider for interaction with ball. 
+        */
         private void Awake()
         {
             var sizeOnScreenSide = 1920f / Scatter;
@@ -16,12 +20,12 @@ namespace Arkanoid.Controllers
             var scatterWidth = Screen.width / sizeOnScreenSide;
             var scatterHeight = Screen.height / sizeOnScreenTop;
 
-            GetScreenBorder(out var screenPoints, scatterWidth, scatterHeight);
+            GetScreenPointsForBorder(out var screenPoints, scatterWidth, scatterHeight);
             ConvertScreenPointsToWorldPoints(ref screenPoints, MainCamera);
             EdgeCollider.points = screenPoints;
         }
-
-        private void GetScreenBorder(out Vector2[] points, float width, float height)
+        
+        private void GetScreenPointsForBorder(out Vector2[] points, float width, float height)
         {
             points = new Vector2[4];
             points[0] = new Vector2(width, 0);

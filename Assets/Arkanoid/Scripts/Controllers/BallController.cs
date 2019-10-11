@@ -11,6 +11,7 @@ namespace Arkanoid.Controllers
 
         private GameModel _gameModel;
     
+        // I set static speed with help kick, because I'm used physics material, where bounciness = 1
         private void Start()
         {
             var rndDirection = new Vector2(Random.Range(-1f, 1f), 1).normalized;
@@ -18,13 +19,15 @@ namespace Arkanoid.Controllers
             _gameModel = GameModel.Instance();
             _gameModel.AddObserver(this);
         }
-
+        
+        //Stop movement ball if the game to over; 
         public void OnObjectChanged(IObserver observer)
         {
             if (_gameModel.GameEnd == GameModel.GameEndResult.Winner)
                 Rigidbody2D.velocity = Vector2.zero;
         }
 
+        //Unsubscribing from game model
         private void OnDestroy()
         {
             _gameModel.RemoveObserver(this);

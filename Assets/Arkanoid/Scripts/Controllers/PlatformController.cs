@@ -15,6 +15,7 @@ namespace Arkanoid.Controllers
 
         private GameModel _gameModel;
 
+        // Get size prefab for calculate edge points to limit platform movement
         private void Start()
         {
             _gameModel = GameModel.Instance();
@@ -28,7 +29,8 @@ namespace Arkanoid.Controllers
             _minPosX = points[0].x;
             _maxPosX = points[3].x;
         }
-
+        
+        //Control platform and set limit movement
         private void Update()
         {
             var position = transform.position;
@@ -39,11 +41,13 @@ namespace Arkanoid.Controllers
             transform.position = position;
         }
 
+        //Unsubscribing from game model
         private void OnDestroy()
         {
             _gameModel.RemoveObserver(this);
         }
-
+        
+        //disable control to platform after end game 
         public void OnObjectChanged(IObserver observer)
         {
             if(_gameModel.GameEnd == GameModel.GameEndResult.NotEnded) return;

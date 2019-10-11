@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using Arkanoid.Controllers;
 using UnityEngine;
+using Random = System.Random;
+
 
 namespace Arkanoid
 {
@@ -8,63 +10,54 @@ namespace Arkanoid
     {
         [SerializeField] private BrickController BrickPrefab;
         [SerializeField] private int Width, Height;
-        [SerializeField] private float Spacing;
-
+        [SerializeField] private float SpacingWight, SpacingHeight;
+        [SerializeField] private Sprite[] _sprites = new Sprite[5]; 
+        
+        private GameModel _gameModel;
         private float _sizeX, _sizeY;
-        private int _brickCounter;
+        
+
+        private void Awake()
+        {
+            _gameModel = GameModel.Instance();
+            _gameModel.SetBricksCount(Width * Height);
+        }
 
         private void Start()
         {
             var brickContainerParent = transform;
-        
+            var rnd = new Random();
+            
+            //Sizing
             var scalePrefab = BrickPrefab.transform.lossyScale;
             var sizePrefab = BrickPrefab.GetComponent<SpriteRenderer>().sprite.bounds.size;
         
-            _sizeX = sizePrefab.x * scalePrefab.x + Spacing;
-            _sizeY = sizePrefab.y * scalePrefab.y + Spacing;
+            _sizeX = sizePrefab.x * scalePrefab.x + SpacingWight;
+            _sizeY = sizePrefab.y * scalePrefab.y + SpacingHeight;
 
-            int counterX = 0;
-
-            var bricks = new List<Transform>();
-            var bricksBounds = new Bounds();
-
-            #region Double cycle && score logics
+            var bricksTransformList = new List<Transform>();
+            var bricksBound = new Bounds();
             
-            for (int x = 0; x < Width; x++)
+            
+            //Double cycle and encapsulate all bricks in bound
+            for (int y = 0; y < Height; y++)
             {
-                int counterY = 0;
-            
-                for (int y = 0; y < Height; y++)
+                BrickPrefab.GetComponent<SpriteRenderer>().sprite = _sprites[rnd.Next(0, _sprites.Length-1)];
+                for (int x = 0; x < Width; x++)
                 {
-                    var brickController = Instantiate(BrickPrefab);
-                    var brickTransform = brickController.transform;
-                    bricks.Add(brickTransform);
-                    brickTransform.position = new Vector3(x + (counterX * _sizeX), y + (counterY * _sizeY), 0);
+                    var brick = Instantiate(BrickPrefab);
+                    var brickTransform = brick.transform;
+                    bricksTransformList.Add(brickTransform);
+                    brickTransform.position = new Vector3(_sizeX * x, _sizeY * y, 0f);
                     brickTransform.parent = brickContainerParent;
-                    counterY++;
-                
-                    bricksBounds.Encapsulate(brickTransform.position);
-
-                    _brickCounter++;
-                    brickController.OnDestroyed += () =>
-                    {
-                        _brickCounter--;
-                        if (_brickCounter == 0)
-                        {
-                            GameModel.Instance().EndGame(true);
-                            GameModel.Instance().SetChanged();
-                        }
-                    };
-
+                    bricksBound.Encapsulate(brickTransform.position);
                 }
-                counterX++;
             }
-            #endregion 
-            
-            // bricks position correction
-            foreach (var brick in bricks)
+
+            // Correction bricks position 
+            foreach (var brick in bricksTransformList)
             {
-                brick.transform.position -= (bricksBounds.center - new Vector3(0f, bricksBounds.size.y * 1.2f, 0f));
+                brick.transform.position -= (bricksBound.center - new Vector3(0f, bricksBound.size.y / 2f, 0f));
             }
         }
     }

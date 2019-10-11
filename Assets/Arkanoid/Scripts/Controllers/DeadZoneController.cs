@@ -8,14 +8,15 @@ namespace Arkanoid.Controllers
         [SerializeField] private Camera Camera;
     
 
+        //Paint a collider for dead zone;
         private void Awake()
         {
-            //Paint a Collider for dead zone;
             GetPointsScreen(out var screenPoints);
             ConversionPointsToWorld(ref screenPoints);
             ZoneCollider2D.points = screenPoints;
         }
-
+        
+        // If player lose
         private void OnTriggerEnter2D(Collider2D other)
         {
             var ball = other.gameObject;
@@ -25,8 +26,7 @@ namespace Arkanoid.Controllers
             GameModel.Instance().EndGame(false);
             GameModel.Instance().SetChanged();
         }
-    
-        #region PaintColider
+        
         private void GetPointsScreen(out Vector2[] points)
         {
             points = new Vector2[2];
@@ -41,6 +41,5 @@ namespace Arkanoid.Controllers
                 points[i] = Camera.ScreenToWorldPoint(new Vector3(points[i].x, points[i].y, 0));
             }
         }
-        #endregion
     }
 }

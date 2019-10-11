@@ -10,6 +10,7 @@ namespace Arkanoid.GUI
     {
         [SerializeField] private EndGamePopupController EndGamePopupController;
         [SerializeField] private Image Vignette;
+        [SerializeField] private Button MenuBtn;
     
         private GameModel _gameModel;
 
@@ -28,6 +29,7 @@ namespace Arkanoid.GUI
         {
             if (_gameModel.GameEnd != GameModel.GameEndResult.NotEnded)
             {
+                //After ShowVignette
                 ShowVignette(() =>
                 {
                     var isWinner = _gameModel.GameEnd == GameModel.GameEndResult.Winner;
@@ -38,6 +40,7 @@ namespace Arkanoid.GUI
 
         private void ShowVignette(Action onComplete)
         {
+            MenuBtn.gameObject.SetActive(false);
             var color = Color.black;
             color.a *= 0f;
             Vignette.color = color;
