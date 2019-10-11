@@ -1,7 +1,7 @@
 # TestProjectArkanoid
 This is one of my test game project. I create simple version of original Arkanoid game. 
 
-![](https://github.com/Alex03Y/TestProjectArkanoid/blob/master/Pictures/ExampleGamePlayHighFps.gif "Example")
+![](https://github.com/Alex03Y/TestProjectArkanoid/blob/master/Pictures/ExampleGamePlay.gif "Example")
 
 Level builder settings:
 
@@ -10,7 +10,7 @@ Level builder settings:
 He make level from bricks with random sprites (colors).
 
 If player win or lose -  in result popup of the game end text will be changed.
-![End Game Popup](https://github.com/Alex03Y/TestProjectArkanoid/blob/master/Pictures/WinPopup.gif "End Game Popup")
+![End Game Popup](https://github.com/Alex03Y/TestProjectArkanoid/blob/master/Pictures/GameWinPopup.gif "End Game Popup")
 
 ## Patterns and Tools
 I'm used MVC for GUI and to controle the state of the game.
