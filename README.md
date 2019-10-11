@@ -1,9 +1,9 @@
 # TestProjectArkanoid
 This is one of my test game project. I create simple version of original Arkanoid game. 
 
-![Example](https://github.com/Alex03Y/TestProjectArkanoid/blob/master/Pictures/Gameplay.gif)
+![Example](https://github.com/Alex03Y/TestProjectArkanoid/blob/master/Pictures/ExampleGamePlayHighFps.gif)
 
-Setings lvl-builder:
+Settings lvl-builder:
 ![Lvl-Builder](https://github.com/Alex03Y/TestProjectArkanoid/blob/master/Pictures/Lvl-builder.png)
 
 Him make lvl of bricks with random sprites (colors).
