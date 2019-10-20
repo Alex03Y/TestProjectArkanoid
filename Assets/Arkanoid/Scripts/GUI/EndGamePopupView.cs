@@ -10,7 +10,7 @@ namespace Arkanoid.GUI
     {
         [SerializeField] private EndGamePopupController EndGamePopupController;
         [SerializeField] private Image Vignette;
-        [SerializeField] private Button MenuBtn;
+        [SerializeField] private float Duration = 0.35f;
     
         private GameModel _gameModel;
 
@@ -40,13 +40,12 @@ namespace Arkanoid.GUI
 
         private void ShowVignette(Action onComplete)
         {
-            MenuBtn.gameObject.SetActive(false);
             var color = Color.black;
             color.a *= 0f;
             Vignette.color = color;
             Vignette.gameObject.SetActive(true);
         
-            DOTween.ToAlpha(() => Vignette.color, x => Vignette.color = x, 0.5f, 0.35f)
+            DOTween.ToAlpha(() => Vignette.color, x => Vignette.color = x, 0.5f, Duration)
                 .OnComplete(() => onComplete?.Invoke());
         }
     }

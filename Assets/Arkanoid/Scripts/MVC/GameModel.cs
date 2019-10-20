@@ -1,4 +1,7 @@
-﻿using Arkanoid.MVC;
+﻿using System;
+using System.Runtime.InteropServices;
+using Arkanoid.MVC;
+using UnityEditor.Sprites;
 
 namespace Arkanoid
 {
@@ -26,19 +29,14 @@ namespace Arkanoid
             Winner,
             Looser
         }
-
-        public int Score { get; private set; }
+        
         public GameEndResult GameEnd { get; private set; }
 
+        public int Score { get; private set; }
+        
         public void AddScore()
         {
             Score++;
-            _bricksCount--;
-            if (_bricksCount == 0)
-            {
-                EndGame(true);
-                SetChanged();
-            }
         }
 
         public void EndGame(bool winner)
@@ -46,11 +44,28 @@ namespace Arkanoid
             GameEnd = winner ? GameEndResult.Winner : GameEndResult.Looser;
         }
 
-        private static int _bricksCount;
+        public int BricksCount { get; private set; }
 
         public void SetBricksCount(int count)
         {
-            _bricksCount = count;
+            if (count == 0) throw new NotImplementedException("Number of bricks in the scene can not be zero"); 
+            BricksCount = count;
+        }
+
+//        public float ScaleFactor { get; private set; } = 1f;
+//
+//        public void SetScaleFactor(float value)
+//        {
+//            ScaleFactor = value;
+//        }
+        public int WidthScreenDefault { get; private set;} 
+        public int HeightScreenDefault { get; private set;}
+        
+        public void SetScreenSizeDefault(int width, int height)
+        {
+            if (width == 0 || height == 0) throw new Exception("Default screen width or height can not be zero");
+            WidthScreenDefault = width;
+            HeightScreenDefault = height;
         }
     }
 }

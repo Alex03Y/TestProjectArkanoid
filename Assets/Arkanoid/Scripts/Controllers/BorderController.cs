@@ -6,32 +6,42 @@ namespace Arkanoid.Controllers
     {
         [SerializeField] private Camera MainCamera;
         [SerializeField] private EdgeCollider2D EdgeCollider;
-        [SerializeField] private float Scatter;
+        [Header("Size in pixel. Needs left or right border image")]
+        [SerializeField] private RectTransform BorderImage;
+        [Header("Debug")]
+        [SerializeField]private float Scatter;
         
         /*
          Resize a border depending on the aspect ratio.
          And paint a collider for interaction with ball. 
         */
-        private void Awake()
+        private void Start()
         {
-            var sizeOnScreenSide = 1920f / Scatter;
-            var sizeOnScreenTop = 1080f / Scatter;
+            var rectBorder = BorderImage.rect;
+            Scatter = rectBorder.width >= rectBorder.height
+                ? rectBorder.height
+                : rectBorder.width;
+            Scatter = Screen.width <= 1920f ? Screen.width * (Scatter / 1920f) : Screen.height * (Scatter / 1080f); 
+//            var sizeOnScreenSide = Scatter / 1920f;
+//            var sizeOnScreenTop = Scatter / 1080f;
+//
+//            var scatterWidth =  Screen.width * sizeOnScreenSide;
+//            var scatterHeight = Screen.height * sizeOnScreenTop;
 
-            var scatterWidth = Screen.width / sizeOnScreenSide;
-            var scatterHeight = Screen.height / sizeOnScreenTop;
-
-            GetScreenPointsForBorder(out var screenPoints, scatterWidth, scatterHeight);
+            GetScreenPointsForBorder(out var screenPoints, Scatter);
             ConvertScreenPointsToWorldPoints(ref screenPoints, MainCamera);
             EdgeCollider.points = screenPoints;
+//            Debug.Log("Height screen= "+ Screen.height + "\n height= " + scatterHeight);
+//            Debug.Log("\n width= " + scatterWidth);
         }
         
-        private void GetScreenPointsForBorder(out Vector2[] points, float width, float height)
+        private void GetScreenPointsForBorder(out Vector2[] points, float scatter)
         {
             points = new Vector2[4];
-            points[0] = new Vector2(width, 0);
-            points[1] = new Vector2(width, Screen.height - height);
-            points[2] = new Vector2(Screen.width - width, Screen.height - height);
-            points[3] = new Vector2(Screen.width - width, 0);
+            points[0] = new Vector2(scatter, 0);
+            points[1] = new Vector2(scatter, Screen.height - scatter);
+            points[2] = new Vector2(Screen.width - scatter, Screen.height - scatter);
+            points[3] = new Vector2(Screen.width - scatter, 0);
         }
 
         private void ConvertScreenPointsToWorldPoints(ref Vector2[] screenPoints, Camera mainCamera)

@@ -12,6 +12,7 @@ namespace Arkanoid.GUI
         [SerializeField] private Button QuitBtn;
         [SerializeField] private TextMeshProUGUI EndGameText;
         [SerializeField] private AnimationCurve ShowAnimationCurve;
+        [SerializeField] private float Duration = 0.35f;
 
         [Multiline] public string WinnerMsg;
         [Multiline] public string LooserMsg;
@@ -29,9 +30,9 @@ namespace Arkanoid.GUI
 
         public void Show(bool isWinner)
         {
-            transform.DOScale(Vector3.one, 0.35f).SetEase(ShowAnimationCurve);
+            transform.DOScale(Vector3.one, Duration).SetEase(ShowAnimationCurve);
             EndGameText.text = isWinner ? WinnerMsg : LooserMsg;
-            EndGameText.text += "\n<color=green>You result: " + GameModel.Instance().Score + "</color>";
+            EndGameText.text += "\n<color=#009659>You result: " + GameModel.Instance().Score + "</color>";
         }
     }
 }
