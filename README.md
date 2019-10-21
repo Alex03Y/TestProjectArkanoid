@@ -28,5 +28,5 @@ All game logic and GUI logic assembled around MVC pattern.
 If player win or lose -  in result popup of the game end text will be changed.
 ![](https://github.com/Alex03Y/TestProjectArkanoid/blob/master/Pictures/GameWin.gif "Win Game Popup")
 
-Animation created by using [DOTween](https://assetstore.unity.com/packages/tools/animation/dotween-hotween-v2-27676) plugin.:
+Animation created by using [DOTween](https://assetstore.unity.com/packages/tools/animation/dotween-hotween-v2-27676) plugin.
 
