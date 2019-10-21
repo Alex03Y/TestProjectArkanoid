@@ -12,11 +12,13 @@ the screen resolution at which you created the scene and [assign](https://github
 Level builder is pretty simple, have a only one prefab, width and height counter with spacing options and pick random sprite for each line of blocks.
 
 Settings:
+
 ![](https://github.com/Alex03Y/TestProjectArkanoid/blob/master/Pictures/Lvl%20Builder.png "Lvl-Builder")
 
 Menu Popup.
 
 Popup, text, substrate and button can be configured separately. Choose the desired location of the button. The remaining elements are tied to it.
+
 ![](https://github.com/Alex03Y/TestProjectArkanoid/blob/master/Pictures/Menu%20Popup.png "Menu popup")
 
 
@@ -24,15 +26,7 @@ Popup, text, substrate and button can be configured separately. Choose the desir
 All game logic and GUI logic assembled around MVC pattern.
 
 If player win or lose -  in result popup of the game end text will be changed.
-![](https://github.com/Alex03Y/TestProjectArkanoid/blob/master/Pictures/Menu%20Popup.png "Win Game Popup")
+![](https://github.com/Alex03Y/TestProjectArkanoid/blob/master/Pictures/GameWin.gif "Win Game Popup")
 
 Animation created by using [DOTween](https://assetstore.unity.com/packages/tools/animation/dotween-hotween-v2-27676) plugin.:
-```
-//Popup menu
-    transform.DOScale(Vector3.one, 0.5f).SetEase(_animationCurve);
-    transform.DOLocalMove(Vector3.one, 0.5f, false).SetEase(_animationCurve);
 
-//Vignette
-    DOTween.ToAlpha(() => Vignette.color, x => Vignette.color = x, 0.5f, 0.35f)
-
-```
