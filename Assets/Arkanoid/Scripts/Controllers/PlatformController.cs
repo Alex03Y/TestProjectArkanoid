@@ -1,5 +1,4 @@
-﻿using System;
-using Arkanoid.MVC;
+﻿using Arkanoid.MVC;
 using UnityEngine;
 
 namespace Arkanoid.Controllers

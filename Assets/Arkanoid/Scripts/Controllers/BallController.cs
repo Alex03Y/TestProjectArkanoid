@@ -1,5 +1,4 @@
-﻿using System;
-using Arkanoid.MVC;
+﻿using Arkanoid.MVC;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -21,9 +20,6 @@ namespace Arkanoid.Controllers
         // I set static speed with help kick, because I'm used physics material, where bounciness = 1
         private void Start()
         {
-//            var scaleBall = transform.localScale;
-//            scaleBall *= _gameModel.ScaleFactor;
-//            transform.localScale = scaleBall;
             var rndDirection = new Vector2(Random.Range(-1f, 1f), 1).normalized;
             Rigidbody2D.AddForce(rndDirection * Speed);
         }

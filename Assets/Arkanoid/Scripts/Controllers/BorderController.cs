@@ -22,17 +22,10 @@ namespace Arkanoid.Controllers
                 ? rectBorder.height
                 : rectBorder.width;
             Scatter = Screen.width <= 1920f ? Screen.width * (Scatter / 1920f) : Screen.height * (Scatter / 1080f); 
-//            var sizeOnScreenSide = Scatter / 1920f;
-//            var sizeOnScreenTop = Scatter / 1080f;
-//
-//            var scatterWidth =  Screen.width * sizeOnScreenSide;
-//            var scatterHeight = Screen.height * sizeOnScreenTop;
 
             GetScreenPointsForBorder(out var screenPoints, Scatter);
             ConvertScreenPointsToWorldPoints(ref screenPoints, MainCamera);
             EdgeCollider.points = screenPoints;
-//            Debug.Log("Height screen= "+ Screen.height + "\n height= " + scatterHeight);
-//            Debug.Log("\n width= " + scatterWidth);
         }
         
         private void GetScreenPointsForBorder(out Vector2[] points, float scatter)

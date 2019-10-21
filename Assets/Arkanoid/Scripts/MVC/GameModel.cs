@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Runtime.InteropServices;
 using Arkanoid.MVC;
-using UnityEditor.Sprites;
 
 namespace Arkanoid
 {
@@ -52,12 +50,6 @@ namespace Arkanoid
             BricksCount = count;
         }
 
-//        public float ScaleFactor { get; private set; } = 1f;
-//
-//        public void SetScaleFactor(float value)
-//        {
-//            ScaleFactor = value;
-//        }
         public int WidthScreenDefault { get; private set;} 
         public int HeightScreenDefault { get; private set;}
         

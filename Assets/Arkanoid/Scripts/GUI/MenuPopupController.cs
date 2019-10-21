@@ -1,9 +1,5 @@
-using System;
-using System.Security.Cryptography;
 using Arkanoid.MVC;
 using DG.Tweening;
-using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -94,8 +90,6 @@ namespace Arkanoid.GUI
                 MenuPopupView.HideVignette();
                 Time.timeScale = 1;
             });
-            
-            
         }
 
         public void OnObjectChanged(IObserver observer)

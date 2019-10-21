@@ -1,13 +1,10 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Arkanoid.Controllers
 {
     public class BrickController : MonoBehaviour
     {
         private GameModel _gameModel;
-        
-        [HideInInspector] public SpriteRenderer SpriteRenderer;
         
         private void OnCollisionEnter2D(Collision2D other)
         {

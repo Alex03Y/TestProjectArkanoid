@@ -1,5 +1,4 @@
-﻿using System;
-using Arkanoid;
+﻿using Arkanoid;
 using Arkanoid.GUI;
 using Arkanoid.MVC;
 using DG.Tweening;
@@ -9,8 +8,6 @@ using UnityEngine.UI;
 
 public class MenuPopupView : MonoBehaviour, IObservable
 {
-    
-    
     [SerializeField] private Image Vignette;
     [SerializeField] private MenuPopupController MenuPopupController;
     [SerializeField] private TextMeshProUGUI ScoreText;
@@ -53,7 +50,6 @@ public class MenuPopupView : MonoBehaviour, IObservable
 
     public void HideVignette()
     {
-        
         DOTween.ToAlpha(() => Vignette.color, x => Vignette.color = x, 0f, 0.2f)
             .OnComplete(()=>
             {
@@ -62,8 +58,6 @@ public class MenuPopupView : MonoBehaviour, IObservable
             });
     }
 
-    
-    
     private void OnDestroy()
     {
         _gameModel.RemoveObserver(this);
