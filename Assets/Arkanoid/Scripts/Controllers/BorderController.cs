@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Arkanoid.Controllers
 {
@@ -10,18 +11,29 @@ namespace Arkanoid.Controllers
         [SerializeField] private RectTransform BorderImage;
         [Header("Debug")]
         [SerializeField]private float Scatter;
+
+        private GameModel _gameModel;
+        private int _widthScreenDefault, _heightScreenDefault;
         
         /*
          Resize a border depending on the aspect ratio.
          And paint a collider for interaction with ball. 
         */
+
+        private void Awake()
+        {
+            _gameModel = GameModel.Instance();
+        }
+
         private void Start()
         {
+            _widthScreenDefault = _gameModel.WidthScreenDefault;
+            _heightScreenDefault = _gameModel.HeightScreenDefault;
             var rectBorder = BorderImage.rect;
             Scatter = rectBorder.width >= rectBorder.height
                 ? rectBorder.height
                 : rectBorder.width;
-            Scatter = Screen.width <= 1920f ? Screen.width * (Scatter / 1920f) : Screen.height * (Scatter / 1080f); 
+            Scatter = Screen.width <= _widthScreenDefault ? Screen.width * (Scatter / _widthScreenDefault) : Screen.height * (Scatter / _heightScreenDefault); 
 
             GetScreenPointsForBorder(out var screenPoints, Scatter);
             ConvertScreenPointsToWorldPoints(ref screenPoints, MainCamera);
