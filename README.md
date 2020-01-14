@@ -1,4 +1,4 @@
-# TestProjectArkanoid
+# Test Project Arkanoid
 This is one of my test game project. I create simple version of original Arkanoid game. 
 Made by Unity v2019.2.5f1.
 
